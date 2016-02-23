@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CircleFlow Sample</string>
+    <string name="sample1_title">Login Flow</string>
+    <string name="sample1_summary">A flow describes user log into the system. \r\nTo login successful, please try user name \"demo\" with password \"demo\".</string>
+    <string name="sample2_title">Order Flow</string>
+    <string name="sample2_summary">A flow describes making the order and payment. When user clicks \"Check Out\", it will wait for the payment with 6 seconds time out.</string>
+    <string name="sample3_title">Complex Flow</string>
+    <string name="sample3_summary">A flow demonstrates the multiple type of control nodes, and flow cancellation.</string>
+    <string name="sample4_title">Flow Context</string>
+    <string name="sample4_summary">Demonstrate the flow context and history.</string>
+</resources>
