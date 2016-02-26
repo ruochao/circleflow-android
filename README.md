@@ -1,11 +1,10 @@
-# CircleFlow #
+# CircleFlow
 
 CircleFlow is a light flow system. It simulates the flow diagram or activity diagram of UML. User can define some tasks, and connect these tasks as a flow. CircleFlow can control the flow execution, status and the result. The task is a executable unit and it should be reusable. There is another unit called control unit which is used to control the flow direction, e.g. Decicion, Fork, Join, Merge, etc.
 
-## How to define a task ##
+## How to define a task
 For simple task, just need to extend from ActionNode.
 ```
-#!java
 public class CheckOutTask extends ActionNode {
     @Override
     public Token execute() {
@@ -15,10 +14,9 @@ public class CheckOutTask extends ActionNode {
 }
 ```
 
-## How to create a flow ##
+## How to create a flow
 Once you have some basic tasks, you can connect them as a flow. Implement FlowDefinition interface to define a flow.
 ```
-#!java
 public class OrderFlow implements FlowDefinition {
     @Override
     public InitialNode getDefinition() {
@@ -33,25 +31,22 @@ public class OrderFlow implements FlowDefinition {
 }
 ```
 
-## How to execute a flow ##
+## How to execute a flow
 ```
-#!java
 CircleFlow.getEngine().executeFlow(new OrderFlow(), inputData);
 ```
 
-## Add CircleFlow to your project (incoming...) ##
+## Add CircleFlow to your project (incoming...)
 
 CircleFlow is available on Maven Central, you can include it in your project by:
 
 Gradle:
 ```
-#!gradle
 compile 'com.mocircle:circleflow:1.0-SNAPSHOT'
 ```
 
 Maven:
 ```
-#!xml
 <dependency>
     <groupId>com.mocircle</groupId>
     <artifactId>circleflow</artifactId>
@@ -59,6 +54,6 @@ Maven:
 </dependency>
 ```
 
-## License ##
+## License
 
 CircleFlow is released under version 2.0 of the Apache License.
