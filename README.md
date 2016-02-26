@@ -38,6 +38,8 @@ CircleFlow.getEngine().executeFlow(new OrderFlow(), inputData);
 
 ## Add CircleFlow to your project (incoming...)
 
+[![Build Status](https://travis-ci.org/mocircle/circleflow-android.svg?branch=master)](https://travis-ci.org/mocircle/circleflow-android)
+
 CircleFlow is available on Maven Central, you can include it in your project by:
 
 Gradle:
