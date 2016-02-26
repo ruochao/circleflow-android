@@ -1,5 +1,7 @@
 # CircleFlow
 
+[![Build Status](https://travis-ci.org/mocircle/circleflow-android.svg?branch=master)](https://travis-ci.org/mocircle/circleflow-android)
+
 CircleFlow is a light flow system. It simulates the flow diagram or activity diagram of UML. User can define some tasks, and connect these tasks as a flow. CircleFlow can control the flow execution, status and the result. The task is a executable unit and it should be reusable. There is another unit called control unit which is used to control the flow direction, e.g. Decicion, Fork, Join, Merge, etc.
 
 ## How to define a task
@@ -37,8 +39,6 @@ CircleFlow.getEngine().executeFlow(new OrderFlow(), inputData);
 ```
 
 ## Add CircleFlow to your project (incoming...)
-
-[![Build Status](https://travis-ci.org/mocircle/circleflow-android.svg?branch=master)](https://travis-ci.org/mocircle/circleflow-android)
 
 CircleFlow is available on Maven Central, you can include it in your project by:
 
