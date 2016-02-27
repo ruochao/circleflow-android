@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.org/mocircle/circleflow-android.svg?branch=master)](https://travis-ci.org/mocircle/circleflow-android)
 
-CircleFlow is a light flow system. It simulates the flow diagram or activity diagram of UML. User can define some tasks, and connect these tasks as a flow. CircleFlow can control the flow execution, status and the result. The task is a executable unit and it should be reusable. There is another unit called control unit which is used to control the flow direction, e.g. Decicion, Fork, Join, Merge, etc.
+CircleFlow is a lightweight flow library for Android. It simulates the flow diagram or activity diagram of UML. User can define some tasks, and connect these tasks as a flow. CircleFlow can control the flow execution, monitor the status and get the results. The task is a executable unit and it should be reusable. There is another unit called control unit which is used to control the flow direction, e.g. Decicion, Fork, Join, Merge, etc.
+
+Please check the [wiki](https://github.com/mocircle/circleflow-android/wiki) for details.
 
 ## How to define a task
 For simple task, just need to extend from ActionNode.
@@ -34,8 +36,15 @@ public class OrderFlow implements FlowDefinition {
 ```
 
 ## How to execute a flow
+For quick flow execution, you can just call like this:
 ```
 CircleFlow.getEngine().executeFlow(new OrderFlow(), inputData);
+```
+If you want to get flow id before the execution, you also can do as: (this is mostly for listening flow execution)
+```
+FlowExecutor executor = CircleFlow.getEngine().prepareFlow(new OrderFlow(), inputData);
+String flowId = executor.getFlowId();
+executor.execute();
 ```
 
 ## Add CircleFlow to your project (incoming...)
