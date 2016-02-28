@@ -11,7 +11,10 @@ def gitUrl = 'https://github.com/mocircle/circleflow-android.git'
 
 // Bintray
 Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+File file = project.rootProject.file('local.properties')
+if (file.exists()) {
+    properties.load(file.newDataInputStream())
+}
 
 bintray {
     user = properties.getProperty("bintray.user")
