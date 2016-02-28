@@ -1,0 +1,98 @@
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+def libraryGroupId = 'com.mocircle'
+def libraryId = 'circleflow'
+def libraryName = 'CircleFlow'
+def libraryDesc = 'A lightweight flow libray for Android'
+def libraryVersion = '1.0.0'
+def siteUrl = 'https://github.com/mocircle/circleflow-android'
+def gitUrl = 'https://github.com/mocircle/circleflow-android.git'
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = libraryId
+        desc = libraryDesc
+        userOrg = properties.getProperty("bintray.organization")
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = false
+        publicDownloadNumbers = true
+        labels = ['android', 'flow']
+        version {
+            name = libraryVersion
+            gpg {
+                sign = true
+                passphrase = properties.getProperty("bintray.gpg.password")
+            }
+        }
+    }
+}
+
+// For maven
+group = libraryGroupId
+version = libraryVersion
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name libraryName
+            description libraryDesc
+            url siteUrl
+
+            packaging 'aar'
+            groupId libraryGroupId
+            artifactId libraryId
+            version libraryVersion
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection gitUrl
+                url siteUrl
+
+            }
+            developers {
+                developer {
+                    name 'mocircle.com'
+                }
+            }
+        }
+    }
+}
+
+// For tasks
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
