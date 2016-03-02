@@ -47,13 +47,22 @@ String flowId = executor.getFlowId();
 executor.execute();
 ```
 
-## Add CircleFlow to your project (incoming...)
+## Add CircleFlow to your project
 
-CircleFlow is available on Maven Central, you can include it in your project by:
+CircleFlow is available on jCenter and Maven Central, you can include it in your project by:
 
 Gradle:
 ```
-compile 'com.mocircle:circleflow:1.0-SNAPSHOT'
+allprojects {
+    repositories {
+        // We support both jCenter and maven central
+        jcenter()
+        mavenCentral()
+    }
+}
+```
+```
+compile 'com.mocircle:circleflow:1.0.0'
 ```
 
 Maven:
@@ -61,7 +70,8 @@ Maven:
 <dependency>
     <groupId>com.mocircle</groupId>
     <artifactId>circleflow</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
+    <type>aar</type>
 </dependency>
 ```
 
